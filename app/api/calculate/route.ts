@@ -1,3 +1,7 @@
+// Vercel Serverless 配置：给 Playwright 足够的资源
+export const maxDuration = 60  // 最长60秒（Playwright 爬取需要时间）
+export const dynamic = 'force-dynamic'
+
 import { NextRequest, NextResponse } from 'next/server'
 import { getBaseRates } from '@/lib/fetchers/frankfurter'       // Wise API（中间汇率）
 import { getSinaRates } from '@/lib/fetchers/sina'              // 新浪（备用）
