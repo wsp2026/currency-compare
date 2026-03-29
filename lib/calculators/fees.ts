@@ -133,20 +133,6 @@ export const CHANNELS: ChannelConfig[] = [
     officialUrl: 'https://www.hsbc.com.cn/foreign-exchange/',
     exchangeUrl: 'https://www.hsbc.com.cn/foreign-exchange/',
   },
-  {
-    name: '渣打银行',
-    logo: 'sc.com',
-    type: 'bank-intl',
-    dataSourceType: 'estimated',
-    dataSourceNote: '基准中间汇率 + 渣打中国公开加点估算（约1%价差，无单独手续费）',
-    rateMarkup: 0.010,
-    feeRate: 0,
-    feeMin: 0,
-    feeMax: 0,
-    feeDesc: '无单独手续费，汇率已含加点',
-    officialUrl: 'https://www.sc.com/cn/foreign-exchange/',
-    exchangeUrl: 'https://www.sc.com/cn/foreign-exchange/',
-  },
   // ── 数字渠道 ────────────────────────────────────────────────
   {
     name: 'Wise',
