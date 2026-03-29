@@ -74,7 +74,8 @@ export async function POST(req: NextRequest) {
     // 加密货币（仅 USD 模式）
     const crypto = cryptoRes.status === 'fulfilled' ? cryptoRes.value : null
     if (crypto && currency === 'USD') {
-      channelRates['usdt'] = baseRate * 1.005   // USDT ≈ USD + C2C 约0.5%溢价
+      channelRates['usdt_okx']    = baseRate * 1.005  // OKX C2C 约+0.5%溢价
+      channelRates['usdt_binance'] = baseRate * 1.003  // Binance C2C 约+0.3%溢价
     }
 
     const results = calculate(amount, currency, baseRate, channelRates, mode, now)
@@ -88,7 +89,7 @@ export async function POST(req: NextRequest) {
       abc:      abcRes.status   === 'fulfilled' ? '实时' : '失败',
       bocom:    bocomRes.status === 'fulfilled' ? '实时' : '失败',
       hsbc:     hsbcRes.status  === 'fulfilled' ? '实时' : '失败',
-      crypto:   crypto ? crypto.source : '失败',
+      crypto:   crypto ? `${crypto.source} (OKX+Binance)` : '失败',
     }
 
     return NextResponse.json({ results, baseRate, sourceStatus, updatedAt: now })
