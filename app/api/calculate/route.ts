@@ -9,6 +9,7 @@ import { getBOCRates } from '@/lib/fetchers/boc'               // 中国银行�
 import { getCMBRates } from '@/lib/fetchers/cmb'               // 招商银行 Playwright
 import { getICBCRates, getCCBRates, getABCRates, getBOCOMRates } from '@/lib/fetchers/banks-playwright'
 import { getHSBCRates } from '@/lib/fetchers/hsbc'             // 汇丰中国 JSON API
+import { getSCBRates }  from '@/lib/fetchers/scb'              // 渣打香港 Bloomberg Spot
 import { getCryptoPrices } from '@/lib/fetchers/crypto'         // Binance Vision + OKX
 import { calculate } from '@/lib/calculators/fees'
 import { Mode } from '@/types'
@@ -27,7 +28,7 @@ export async function POST(req: NextRequest) {
     const now = new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' })
 
     // 并行获取所有数据（任一失败不影响整体）
-    const [wiseRes, sinaRes, bocRes, cmbRes, icbcRes, ccbRes, abcRes, bocomRes, hsbcRes, cryptoRes] =
+    const [wiseRes, sinaRes, bocRes, cmbRes, icbcRes, ccbRes, abcRes, bocomRes, hsbcRes, scbRes, cryptoRes] =
       await Promise.allSettled([
         getBaseRates(),    // Wise 中间汇率
         getSinaRates(),    // 新浪备用
@@ -38,6 +39,7 @@ export async function POST(req: NextRequest) {
         getABCRates(),     // 农行 Playwright
         getBOCOMRates(),   // 交行 Playwright
         getHSBCRates(),    // 汇丰 JSON API
+        getSCBRates(),     // 渣打香港 Bloomberg Spot
         getCryptoPrices(), // Binance Vision + OKX
       ])
 
@@ -70,6 +72,7 @@ export async function POST(req: NextRequest) {
     pick(abcRes,   'abc')
     pick(bocomRes, 'bocom')
     pick(hsbcRes,  'hsbc')
+    pick(scbRes,   'scb')
 
     // 加密货币（仅 USD 模式）
     const crypto = cryptoRes.status === 'fulfilled' ? cryptoRes.value : null
@@ -89,6 +92,7 @@ export async function POST(req: NextRequest) {
       abc:      abcRes.status   === 'fulfilled' ? '实时' : '失败',
       bocom:    bocomRes.status === 'fulfilled' ? '实时' : '失败',
       hsbc:     hsbcRes.status  === 'fulfilled' ? '实时' : '失败',
+      scb:      scbRes.status   === 'fulfilled' ? '实时' : '失败',
       crypto:   crypto ? `${crypto.source} (OKX+Binance)` : '失败',
     }
 

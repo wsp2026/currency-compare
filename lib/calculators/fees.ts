@@ -133,6 +133,21 @@ export const CHANNELS: ChannelConfig[] = [
     officialUrl: 'https://www.hsbc.com.cn/foreign-exchange/',
     exchangeUrl: 'https://www.hsbc.com.cn/foreign-exchange/',
   },
+  {
+    name: '渣打银行',
+    logo: 'sc.com',
+    type: 'bank-intl',
+    dataSourceType: 'official-scrape',
+    dataSourceNote: '实时爬取渣打香港官网 Bloomberg Spot 报价，经 USD/CNH 换算为人民币汇率',
+    channelKey: 'scb',
+    rateMarkup: 0,
+    feeRate: 0,
+    feeMin: 0,
+    feeMax: 0,
+    feeDesc: '无单独手续费，汇率已含加点',
+    officialUrl: 'https://www.sc.com/hk/investment/foreign-exchange/foreign-exchange-rate/',
+    exchangeUrl: 'https://www.sc.com/cn/foreign-exchange/',
+  },
   // ── 数字渠道 ────────────────────────────────────────────────
   {
     name: 'Wise',
