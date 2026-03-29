@@ -28,7 +28,7 @@ export const CHANNELS: ChannelConfig[] = [
   // ── 国内银行 ────────────────────────────────────────────────
   {
     name: '中国银行',
-    logo: '🔴',
+    logo: 'boc.cn',
     type: 'bank-cn',
     dataSourceType: 'official-scrape',
     dataSourceNote: '实时爬取 boc.cn 官方牌价',
@@ -43,7 +43,7 @@ export const CHANNELS: ChannelConfig[] = [
   },
   {
     name: '工商银行',
-    logo: '🔵',
+    logo: 'icbc.com.cn',
     type: 'bank-cn',
     dataSourceType: 'official-scrape',
     dataSourceNote: 'Playwright 无头浏览器实时爬取工行官网牌价',
@@ -58,7 +58,7 @@ export const CHANNELS: ChannelConfig[] = [
   },
   {
     name: '建设银行',
-    logo: '🟤',
+    logo: 'ccb.com',
     type: 'bank-cn',
     dataSourceType: 'official-scrape',
     dataSourceNote: 'Playwright 无头浏览器实时爬取建行官网牌价',
@@ -73,7 +73,7 @@ export const CHANNELS: ChannelConfig[] = [
   },
   {
     name: '农业银行',
-    logo: '🟢',
+    logo: 'abchina.com',
     type: 'bank-cn',
     dataSourceType: 'official-scrape',
     dataSourceNote: 'Playwright 无头浏览器实时爬取农行官网牌价',
@@ -88,7 +88,7 @@ export const CHANNELS: ChannelConfig[] = [
   },
   {
     name: '招商银行',
-    logo: '🏦',
+    logo: 'cmbchina.com',
     type: 'bank-cn',
     dataSourceType: 'official-scrape',
     dataSourceNote: 'Playwright 无头浏览器实时爬取招行官网 fx.cmbchina.com 牌价',
@@ -103,7 +103,7 @@ export const CHANNELS: ChannelConfig[] = [
   },
   {
     name: '交通银行',
-    logo: '🏦',
+    logo: 'bankcomm.com',
     type: 'bank-cn',
     dataSourceType: 'official-scrape',
     dataSourceNote: 'Playwright 无头浏览器实时爬取交行官网牌价',
@@ -120,7 +120,7 @@ export const CHANNELS: ChannelConfig[] = [
   {
     // 汇丰中国银行：官方 JSON API 直接调用，实时数据
     name: '汇丰银行',
-    logo: '🔴',
+    logo: 'hsbc.com.cn',
     type: 'bank-intl',
     dataSourceType: 'official-api',
     dataSourceNote: '实时调用汇丰中国网银公开 JSON API（services.cn-banking.hsbc.com.cn）',
@@ -136,7 +136,7 @@ export const CHANNELS: ChannelConfig[] = [
   // ── 数字渠道 ────────────────────────────────────────────────
   {
     name: 'Wise',
-    logo: '💚',
+    logo: 'wise.com',
     type: 'digital',
     dataSourceType: 'official-api',
     dataSourceNote: '实时调用 Wise 官方公开 API',
@@ -154,7 +154,7 @@ export const CHANNELS: ChannelConfig[] = [
     // USDT ≈ USD（偏差 <0.1%），可直接与美元兑换结果对比
     // 汇率来源：Binance Vision BTC/USDT × Wise USD/CNY 换算
     name: 'OKX · USDT',
-    logo: '₮',
+    logo: 'okx.com',
     type: 'crypto',
     dataSourceType: 'market-api',
     dataSourceNote: '实时行情来自 Binance Vision (data-api.binance.vision)，USDT ≈ USD，C2C 约+0.5%溢价',

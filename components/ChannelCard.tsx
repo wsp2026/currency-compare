@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react'
 import { ChannelResult, Currency, Mode } from '@/types'
+import ChannelLogo from './ChannelLogo'
 
 interface Props {
   result: ChannelResult
@@ -31,7 +32,7 @@ export default function ChannelCard({ result, rank, mode, currency, compact = fa
       <div className="flex items-center justify-between rounded-xl border border-gray-100 bg-white px-4 py-3">
         <div className="flex items-center gap-2 text-sm">
           <span className="w-5 text-center text-xs text-gray-400">{rank}</span>
-          <span>{result.logo}</span>
+          <ChannelLogo domain={result.logo} name={result.name} size={22} />
           <span className="font-medium text-gray-800">{result.name}</span>
           {/* 数据来源标签 */}
           <button
@@ -84,7 +85,7 @@ export default function ChannelCard({ result, rank, mode, currency, compact = fa
       {/* 渠道信息 + 结果 */}
       <div className="flex items-start justify-between gap-4 mt-1">
         <div className="flex items-center gap-2">
-          <span className="text-2xl">{result.logo}</span>
+          <ChannelLogo domain={result.logo} name={result.name} size={36} />
           <div>
             <div className="font-semibold text-gray-900">{result.name}</div>
             <div className="flex items-center gap-1.5 mt-0.5">
